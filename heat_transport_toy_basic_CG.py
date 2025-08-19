@@ -40,7 +40,7 @@ flux = k_par * bhat * dot(bhat, grad(u)) + k_per * (grad(u) - bhat * dot(bhat, g
 # here is a modified version of the above from examining "The influence of boundary and edge-plasma modeling in computations of axisymmetric vertical displacement" by Bunkers and Sovinec (Appendix A in paper)
 # this seems to work - no artifacts - and it is not identical to the straight Robin condition
 norm = FacetNormal(mesh)
-a = inner(flux, grad(v))*dx + (k_par*dot(norm,flux)+u*dot(norm,bhat))*v*(ds(15)+ds(17)+ds(18)+ds(19)+ds(20))
+a = inner(flux, grad(v))*dx + (u*dot(norm,bhat))*v*(ds(15)+ds(17)+ds(18)+ds(19)+ds(20))
 
 # a more standard Robin BC
 # this doesn't produce weird artifacts but I don't think it's quite the correct physics
